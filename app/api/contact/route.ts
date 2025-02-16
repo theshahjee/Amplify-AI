@@ -5,9 +5,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
     try {
-        const { name, email, description, twitter, newsletter, linkedin, contactDetail } = await request.json();
+        const { name, email } = await request.json();
         await connectToMongo();
-        await ContactModel.create({ name, email, description, twitter, newsletter, linkedin, contactDetail });
+        await ContactModel.create({ name, email });
         await mongoose.connection.close();
         return NextResponse.json({ message: "Message sent successfully" }, { status: 201 });
     } catch (err) {

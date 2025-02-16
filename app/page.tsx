@@ -1,81 +1,249 @@
-import Benefits from '@/components/Benefits';
-import Billy from '@/components/BillyPromise';
-import FeaturesSection from '@/components/Feature';
-import MaxWidthWrapper from '@/components/MaxWidthWrapper';
-import Offer from '@/components/Offer';
+'use client';
 
+import { FaRobot, FaBolt, FaBrain } from 'react-icons/fa';
+import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import JoinWaitlistButton from '@/components/ui/joinwaitlist';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import FAQItem from '@/components/FAQItem';
+
+const SEOKeywordsSection = () => {
+  return (
+    <motion.section
+      className="bg-gradient-to-br from-blue-50 to-blue-100 py-16 px-6 md:px-16 rounded-lg shadow-lg text-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2, ease: 'easeOut' }}
+    >
+      <motion.div className="max-w-7xl mx-auto">
+        <motion.h2
+          className="text-4xl md:text-5xl font-extrabold mb-6 text-blue-900 leading-tight"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          SEO-Optimized Keywords
+        </motion.h2>
+
+        <motion.p
+          className="text-lg md:text-xl mb-12 text-blue-700 leading-relaxed"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+        >
+          Optimize your content with top industry keywords to improve your search engine rankings and attract more organic traffic.
+        </motion.p>
+
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          {[
+            {
+              title: 'AI Customer Support Solutions',
+              description: 'Enhance your customer support system with AI-driven solutions that provide 24/7 assistance, improving efficiency and customer satisfaction.',
+            },
+            {
+              title: 'AI Chatbots for E-commerce',
+              description: 'Boost your e-commerce business by integrating AI chatbots that can handle customer inquiries, process orders, and provide personalized recommendations.',
+            },
+            {
+              title: 'Automation Tools for Businesses',
+              description: 'Streamline operations and enhance productivity with AI-powered automation tools tailored for businesses across industries.',
+            },
+            {
+              title: 'Save Time and Grow Revenue with AI',
+              description: 'Leverage the power of AI to save valuable time while increasing revenue through smarter decision-making and efficient operations.',
+            },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: index * 0.2 }}
+            >
+              <h3 className="text-xl font-semibold text-blue-800">{item.title}</h3>
+              <p className="text-blue-600 mt-2">{item.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+    </motion.section>
+  );
+};
+
+const CallToAction = () => {
+  return (
+    <motion.section
+      className="bg-gradient-to-br from-blue-100 to-blue-200 py-16 px-6 md:px-16 rounded-lg shadow-lg text-center"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.2, ease: 'easeOut' }}
+    >
+      <motion.div className="max-w-7xl mx-auto">
+        <motion.h2
+          className="text-5xl md:text-6xl font-extrabold mb-6 text-blue-900 leading-tight"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          Ready to Amplify Your Business with AI?
+        </motion.h2>
+
+        <motion.p
+          className="text-lg md:text-2xl mb-12 text-blue-700 leading-relaxed"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+        >
+          Join forward-thinking businesses unlocking their potential with Amplify AI.
+        </motion.p>
+
+        <motion.div
+          className="flex justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          <JoinWaitlistButton />
+        </motion.div>
+      </motion.div>
+    </motion.section>
+  );
+};
+
+const WhatSetsUsApart = () => {
+  return (
+    <motion.section
+      className="bg-gradient-to-br from-blue-50 to-blue-100 py-16 px-6 md:px-16 rounded-lg shadow-lg max-w-7xl mx-auto"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.2 }}
+    >
+      <motion.h2
+        className="text-center text-4xl font-extrabold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        What Sets Us Apart?
+      </motion.h2>
+
+      <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        {[
+          {
+            title: 'Best AI Technology',
+            description:
+              'Built on cutting-edge AI technology that understands and responds like a human, using advanced tools to analyze and process language naturally.',
+            icon: <FaBolt className="text-6xl text-yellow-500 mb-4" />,
+          },
+          {
+            title: 'Global Expertise',
+            description:
+              'Delivering AI solutions to businesses across the world, ensuring scalable success and future-proof technologies.',
+            icon: <FaRobot className="text-6xl text-green-500 mb-4" />,
+          },
+          {
+            title: 'Measurable Outcomes',
+            description:
+              'Achieve tangible results, from cost savings to revenue growth, with clear and quantifiable business improvements driven by our AI solutions.',
+            icon: <FaBrain className="text-6xl text-blue-500 mb-4" />,
+          },
+        ].map((item, index) => (
+          <motion.div
+            key={index}
+            className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            {item.icon}
+            <h3 className="text-2xl font-semibold mt-6 text-blue-800">{item.title}</h3>
+            <p className="text-blue-600 mt-4">{item.description}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+    </motion.section>
+  );
+};
 
 export default function Home() {
   return (
-    <div className="bg-[url('/div.svg')] opacity-100 min-h-screen py-10 px-5 ">
+    <div className="bg-white min-h-screen text-black py-16 px-8">
       <MaxWidthWrapper>
-        <div className="space-y-10">
-          <header className="text-center mb-10">
-            <div className=" opacity-100 inline-flex items-center justify-center px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              <img src='/paw.png' alt='paw' className="h-5 w-5 mr-2" />
-              <span>BUILDING THE LARGEST PLATFORM FOR B2B CREATORS</span>
-              <img src='/paw.png' alt='paw' className="h-5 w-5 ml-2" />
-            </div>
-            <h1 className="text-3xl md:text-4xl font-bold">
-              Run Your Entire Creator Business &<br />
-              Get B2B Sponsorships for
-            </h1>
+        <motion.div className="space-y-16">
+          {/* Hero Section */}
+          <header className="text-center mb-16">
+            <motion.div
+              className="text-6xl font-extrabold bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent bg-clip-text"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              AMPLIFY AI
+            </motion.div>
+            <motion.h1
+              className="text-6xl font-extrabold mt-8 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              Welcome to the Future of AI-Driven Success 🚀
+            </motion.h1>
+            <motion.p
+              className="text-xl mt-4 text-gray-500"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.2 }}
+            >
+              Transform your business with cutting-edge AI solutions that drive growth, save time, and amplify success.
+            </motion.p>
+            <motion.div className="mt-10">
+              <Link href="/waitlist">
+                <JoinWaitlistButton />
+              </Link>
+            </motion.div>
           </header>
-          
-          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center">
-            <div className="p-6 sm:p-8 md:p-12 bg-white border rounded-lg">
-              <img src='/newsletter.png' alt='newsletter' className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-4" />
-              <h2 className="text-lg sm:text-xl font-bold mb-4 md:mb-6">Newsletter Creator</h2>
-              <p>Active newsletter with excellent open rates and CTR.</p>
-            </div>
-            <div className="p-6 sm:p-8 md:p-12 bg-white border rounded-lg">
-              <img src='/linkedin.png' alt='linkedinicon' className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-4" />
-              <h2 className="text-lg sm:text-xl font-bold mb-2 md:mb-6">LinkedIn Influencer</h2>
-              <p>I post on LinkedIn and have a strong following.</p>
-            </div>
-            <div className="p-6 sm:p-8 md:p-12 bg-white border rounded-lg">
-              <img src='/x.png' alt='xicon' className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-4" />
-              <h2 className="text-lg sm:text-xl font-bold mb-2 md:mb-6">Twitter Influencer</h2>
-              <p>I post on X and have a strong following.</p>
-            </div>
+
+          {/* Why Amplify AI Section */}
+          <section className="text-center">
+            <WhatSetsUsApart />
           </section>
 
-          <section className="text-center flex flex-col items-center justify-center space-y-4 md:space-y-0 md:flex-row md:space-x-4">
-            <div className="flex flex-col items-center space-y-1">
-              <span className="text-gray-600 text-lg">115+ Creators</span>
-              <span className="text-gray-600">Already Joined</span>
-            </div>
-            <img src='/arrow.png' alt='arrow' className="hidden md:block w-8 h-6 md:w-12 md:h-8" />
+          {/* Call to Action */}
+          <CallToAction />
 
-            <Link href='/waitlist' className="join-waitlist-button" >
-              <JoinWaitlistButton  />
-            </Link>
+          {/* FAQ Section */}
+          <section className="text-center mt-16">
+            <motion.h2
+              className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500"
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              FAQs
+            </motion.h2>
+            <motion.div className="mt-8 space-y-6">
+              {[
+                {
+                  question: 'How quickly can Amplify AI solutions be implemented?',
+                  answer: 'Our solutions are designed for rapid deployment, so you can start seeing results in a matter of weeks, not months.',
+                },
+                {
+                  question: 'Is Amplify AI suitable for my industry?',
+                  answer: 'Absolutely! Whether you’re in e-commerce, finance, retail, or other sectors, we tailor our solutions to fit your needs.',
+                },
+                {
+                  question: 'Do I need technical expertise to use Amplify AI?',
+                  answer: 'No, our platform is user-friendly, designed to be easy for teams without technical experience to use effectively.',
+                },
+              ].map((faq, index) => (
+                <FAQItem key={index} question={faq.question} answer={faq.answer} />
+              ))}
+            </motion.div>
           </section>
-         
-        </div>
+
+          {/* SEO Keywords */}
+          <SEOKeywordsSection />
+        </motion.div>
       </MaxWidthWrapper>
-      <MaxWidthWrapper className='mt-28 '>
-  
-
-  <FeaturesSection />
-</MaxWidthWrapper>
-      <MaxWidthWrapper className='mt-28'>
-
-          <Benefits />
-      </MaxWidthWrapper>
-
-      <MaxWidthWrapper className='mt-28'>
-
-          <Offer />
-      </MaxWidthWrapper>
-
-          <MaxWidthWrapper className='mt-28'>
-
-          <Billy />
-      </MaxWidthWrapper>
-
     </div>
   );
 }

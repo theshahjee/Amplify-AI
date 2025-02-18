@@ -164,40 +164,48 @@ const WhatSetsUsApart = () => {
   );
 };
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="bg-white min-h-screen text-black py-16 px-8">
+    <div className="bg-[#f5f5f5] min-h-screen text-black py-24 px-8">
       <MaxWidthWrapper>
-        <motion.div className="space-y-16">
+        <motion.div className="space-y-24">
           {/* Hero Section */}
-          <header className="text-center mb-16">
-            <motion.div
-              className="text-6xl font-extrabold bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent bg-clip-text"
+          <header className="text-center">
+            <motion.h1
+              className="text-7xl font-extrabold bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent bg-clip-text"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
               AMPLIFY AI
-            </motion.div>
-            <motion.h1
-              className="text-6xl font-extrabold mt-8 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400"
+            </motion.h1>
+            <motion.h2
+              className="text-5xl font-bold mt-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
               Welcome to the Future of AI-Driven Success 🚀
-            </motion.h1>
+            </motion.h2>
             <motion.p
-              className="text-xl mt-4 text-gray-500"
+              className="text-lg mt-4 text-gray-600 max-w-2xl mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.2 }}
             >
               Transform your business with cutting-edge AI solutions that drive growth, save time, and amplify success.
             </motion.p>
-            <motion.div className="mt-10">
+
+            {/* Call to Action Button - Centered */}
+            <motion.div className="mt-12 flex justify-center">
               <Link href="/waitlist">
-                <JoinWaitlistButton />
+                <motion.button
+                  className="bg-black text-white text-lg px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-900 transition-all duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Join the Waitlist 🚀
+                </motion.button>
               </Link>
             </motion.div>
           </header>
@@ -213,14 +221,14 @@ export default function Home() {
           {/* FAQ Section */}
           <section className="text-center mt-16">
             <motion.h2
-              className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500"
+              className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
               FAQs
             </motion.h2>
-            <motion.div className="mt-8 space-y-6">
+            <motion.div className="mt-8 space-y-6 max-w-3xl mx-auto">
               {[
                 {
                   question: 'How quickly can Amplify AI solutions be implemented?',
@@ -246,4 +254,6 @@ export default function Home() {
       </MaxWidthWrapper>
     </div>
   );
-}
+};
+
+export default Home;

@@ -79,7 +79,7 @@ const ContactPage: React.FC = () => {
     <div className="min-h-screen bg-gray-50 py-12 px-6 lg:px-16">
       <div className="max-w-4xl mx-auto">
         {/* Page Title */}
-        <h1 className="text-4xl font-bold text-gray-800 text-center">Contact Amplify AI</h1>
+        <h1 className="text-4xl font-bold text-gray-800 text-center pt-20">Contact Amplify AI</h1>
 
         {/* Introduction Section */}
         <p className="mt-4 text-lg text-gray-600 text-center">

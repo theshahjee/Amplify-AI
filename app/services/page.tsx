@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Slider from "react-slick";
+import FAQItem from "@/components/FAQItem";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
@@ -52,7 +53,6 @@ const services: Service[] = [
   { name: "AI Content Generation", description: "Automated high-quality content.", icon: faMagic },
   { name: "Image Recognition", description: "AI-based image analysis.", icon: faImage },
   { name: "Sales Lead Scoring", description: "AI-prioritized sales leads.", icon: faFilter },
-  { name: "Call Center Optimization", description: "AI-enhanced call analytics.", icon: faPhoneVolume },
 ];
 
 const ServicePage: React.FC = () => {
@@ -74,7 +74,10 @@ const ServicePage: React.FC = () => {
       { breakpoint: 768, settings: { slidesToShow: 1, centerPadding: "0px" } },
     ],
   };
-
+  const sectionVariants = {
+    initial: { opacity: 0, y: 50 },
+    animate: { opacity: 1, y: 0 },
+  };
   const faqs = [
     {
       question: "How quickly can Amplify AI solutions be implemented?",
@@ -91,11 +94,11 @@ const ServicePage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black min-h-screen px-6 py-12">
+    <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black min-h-screen px-6 py-12 pt-20">
       <div className="max-w-5xl mx-auto text-center">
         {/* Page Title */}
         <motion.h1
-          className="text-6xl font-extrabold text-orange-600 dark:text-orange-400"
+          className="text-6xl font-extrabold text-gray-900 dark:text-orange-400"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -158,29 +161,18 @@ const ServicePage: React.FC = () => {
             Join the Waiting List
           </motion.button>
         </motion.div>
-
-        {/* FAQs Section */}
-        <div className="mt-20 text-left">
-          <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Frequently Asked Questions
-          </h3>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 + index * 0.1 }}
-              >
-                <h4 className="text-lg font-semibold text-orange-600 dark:text-orange-400 mb-3">
-                  {faq.question}
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300">{faq.answer}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        <motion.section variants={sectionVariants}>
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 pt-10">FAQs</h2>
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <FAQItem
+                  key={index}
+                  question={faq.question}
+                  answer={faq.answer}
+                />
+              ))}
+            </div>
+          </motion.section>
       </div>
     </div>
   );
